@@ -1,20 +1,29 @@
 package com.mycompany.app;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class AppTest {
+WebDriver driver;
 
-	public static void main(String[] args) {
-		
-		WebDriver driver = new EdgeDriver();
-		driver.manage().window().maximize();
-		//URL
+@BeforeMethod
+public void setup() {
+    WebDriver driver = new EdgeDriver();
+    // Other setup configurations, if needed
+    this.driver = driver;
+}
+
+		@Test
+		public void login() throws InterruptedException{
+			Thread.sleep(2000);
 		driver.get("https://petstore.octoperf.com/actions/Account.action?newAccountForm=");
-		//user name text box
 		driver.findElement(By.name("username")).sendKeys("kt032");
 		//password text box
 		driver.findElement(By.name("password")).sendKeys("123456");
@@ -24,6 +33,11 @@ public class AppTest {
 		driver.findElement(By.name("account.firstName")).sendKeys("nithya");
 		//last name text box
 		driver.findElement(By.name("account.lastName")).sendKeys("nagu");
+		Thread.sleep(2000);
+		
+		
+	
+
 		//email text box
 		driver.findElement(By.name("account.email")).sendKeys("1139@gmail.com");
 		//phone number text field
@@ -55,11 +69,19 @@ public class AppTest {
 		//save account info button
 		driver.findElement(By.name("newAccount")).click();
 		
+		}
+		
+		@AfterMethod
+		public void teardown() {
+		    if (driver != null) {
+		        driver.quit();
+		    }
+		}
+	
 		
 		
-		
-		
-		
-	}
+	
 
 }
+
+
