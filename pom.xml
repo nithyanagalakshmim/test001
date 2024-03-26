@@ -8,11 +8,19 @@
   <name>my-app</name>
   <url>https://maven.apache.org</url>
   <dependencies>
+    <!-- JUnit for testing -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.10.2</version>
       <scope>test</scope>
+    </dependency>
+    
+    <!-- Selenium WebDriver -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.1.1</version> <!-- Or the latest version -->
     </dependency>
   </dependencies>
   <properties>
