@@ -1,25 +1,23 @@
 package com.mycompany.app;
 
-import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-/**
- * Unit test for simple App.
- */
-public class AppTest
-{
-    @Test
-    public void testAppConstructor() {
-        App app1 = new App();
-        App app2 = new App();
-        assertEquals(app1.getMessage(), app2.getMessage());
-    }
-
-    @Test
-    public void testAppMessage()
-    {
-        App app = new App();
-        assertEquals("Hie World!", app.getMessage());
+public class AppTest {
+    public static void main(String[] args) throws InterruptedException {
+        // Initialize EdgeDriver
+        WebDriver driver = new EdgeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.saucedemo.com/");
+       
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        Thread.sleep(2000);
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        Thread.sleep(2000);
+        driver.findElement(By.id("login-button")).click();
+        Thread.sleep(2000);
     }
 }
